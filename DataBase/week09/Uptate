@@ -1,0 +1,4 @@
+update a_enrol set enr_grade = enr_grade + 10
+    where sub_no = 
+    (select sub_no from subject
+    where sub_name = '시스템 분석설계');
