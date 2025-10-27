@@ -7,9 +7,9 @@ create table a_enrol as select *
 insert into a_enrol(sub_no, stu_no, enr_grade) values ( 108, 20211062, 92 );
 
 insert into a_enrol values ( 109, 20212088, 85 );
-
+ //행들 다 맞으면 벨류 안 써도됨
 insert into a_enrol(sub_no, stu_no) values ( 110, 20212088 );
- 
+  //아니면 꼭 써야함
 insert into a_enrol values(111, 20213075, null);
 
 insert into a_enrol select * from enrol where stu_no like '2021%';
