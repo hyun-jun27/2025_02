@@ -1,0 +1,9 @@
+delete from a_enrol where stu_no = 20191001;
+
+delete from a_enrol where stu_no = 
+    (select sub_no from subject
+    where sub_name = '기계요소설계');
+    
+delete from a_enrol
+
+drop table a_enrol;
