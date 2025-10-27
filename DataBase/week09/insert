@@ -1,0 +1,19 @@
+select * from a_student;
+select * from a_enrol;
+
+create table a_enrol as select *
+ from enrol where stu_no < 20210000;
+ 
+insert into a_enrol(sub_no, stu_no, enr_grade) values ( 108, 20211062, 92 );
+
+insert into a_enrol values ( 109, 20212088, 85 );
+
+insert into a_enrol(sub_no, stu_no) values ( 110, 20212088 );
+ 
+insert into a_enrol values(111, 20213075, null);
+
+insert into a_enrol select * from enrol where stu_no like '2021%';
+  update a_enrol set enr_grade = enr_grade + 5;
+ 
+ 
+
