@@ -1,0 +1,35 @@
+create table test1 (u_id varchar2(10), u_date date);
+
+create table t_student
+ as select * from student where stu_dept = '기계';
+ 
+alter table t_student add (army char(1));
+
+select *  from test_student;
+
+alter table t_student modify( army number);
+
+alter table t_student drop( army);
+
+rename t_student to test_student;
+
+truncate table test_student;
+
+rollback;
+
+drop table test_student;
+
+select * from user_constraints where table_name = 'STUDENT';
+
+select * from user_constraints where table_name = 'ENROL';
+
+create or replace view v_student1
+as select * from student where stu_dept = '컴퓨터정보';
+
+select * from v_student1;
+
+select * from v_student1 where stu_grade = 2;
+ 
+select stu_no,stu_name,stu_height from (select stu_no, stu_name, stu_height
+from student where stu_height is not null order by stu_height desc) where rownum<= 5;
+
