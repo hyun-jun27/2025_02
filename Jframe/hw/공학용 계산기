@@ -8,6 +8,9 @@ public class MainFrame extends javax.swing.JFrame {
     double num2;
     double result;
     String operator;
+    String angleMode = "Degrees";
+    boolean isInverse = false;
+    boolean isHyperbolic = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
@@ -157,7 +160,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton_7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 35, -1));
+        getContentPane().add(jButton_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 120, 40, -1));
 
         jButton_9.setForeground(new java.awt.Color(0, 0, 255));
         jButton_9.setText("9");
@@ -260,9 +263,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         angleGroup.add(Degrees);
         Degrees.setText("Degrees");
+        Degrees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DegreesActionPerformed(evt);
+            }
+        });
 
         angleGroup.add(Radians);
         Radians.setText("Radians");
+        Radians.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadiansActionPerformed(evt);
+            }
+        });
 
         angleGroup.add(Grads);
         Grads.setText("Grads");
@@ -311,6 +324,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_ln.setForeground(new java.awt.Color(255, 51, 204));
         jButton_ln.setText("ln");
+        jButton_ln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_lnActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 151, 50, -1));
 
         jButton18.setForeground(new java.awt.Color(255, 51, 204));
@@ -343,7 +361,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton_4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 35, -1));
+        getContentPane().add(jButton_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 150, 40, -1));
 
         jButton_6.setForeground(new java.awt.Color(0, 0, 255));
         jButton_6.setText("6");
@@ -380,6 +398,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_log.setForeground(new java.awt.Color(255, 51, 204));
         jButton_log.setText("log");
+        jButton_log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_logActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_log, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 180, 50, -1));
 
         jButton_sin.setForeground(new java.awt.Color(255, 51, 204));
@@ -411,7 +434,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton_1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 180, 35, -1));
+        getContentPane().add(jButton_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 180, 40, -1));
 
         jButton_3.setForeground(new java.awt.Color(0, 0, 255));
         jButton_3.setText("3");
@@ -444,10 +467,20 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_x3.setForeground(new java.awt.Color(255, 51, 204));
         jButton_x3.setText("x^3");
+        jButton_x3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_x3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_x3, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 209, 59, -1));
 
         jButton_np.setForeground(new java.awt.Color(255, 51, 204));
         jButton_np.setText("n!");
+        jButton_np.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_npActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_np, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 209, 50, -1));
 
         jButton_cos.setForeground(new java.awt.Color(255, 51, 204));
@@ -466,7 +499,12 @@ public class MainFrame extends javax.swing.JFrame {
         jButton_PM.setForeground(new java.awt.Color(0, 0, 255));
         jButton_PM.setText("+/-");
         jButton_PM.setToolTipText("");
-        getContentPane().add(jButton_PM, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 209, 35, -1));
+        jButton_PM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_PMActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_PM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 50, -1));
 
         jButton_0.setForeground(new java.awt.Color(0, 0, 255));
         jButton_0.setText("0");
@@ -475,7 +513,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton_0ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 209, 35, -1));
+        getContentPane().add(jButton_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 40, -1));
 
         jButton44.setForeground(new java.awt.Color(0, 0, 255));
         jButton44.setText(".");
@@ -484,7 +522,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton44ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 209, 35, -1));
+        getContentPane().add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 209, 20, -1));
 
         jButton_Plus.setForeground(new java.awt.Color(255, 0, 0));
         jButton_Plus.setText("+");
@@ -522,6 +560,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_1x.setForeground(new java.awt.Color(255, 51, 204));
         jButton_1x.setText("1/x");
+        jButton_1x.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_1xActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_1x, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 238, 50, -1));
 
         jButton_tan.setForeground(new java.awt.Color(255, 51, 204));
@@ -540,7 +583,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(jButton_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 238, 35, -1));
 
         jButton_A.setText("A");
-        getContentPane().add(jButton_A, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 238, 35, -1));
+        getContentPane().add(jButton_A, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 238, 40, -1));
 
         jButton_C.setText("C");
         getContentPane().add(jButton_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 238, 35, -1));
@@ -589,6 +632,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void GradsActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
+        angleMode = "Grads";
     }                                     
 
     private void jButton_FEActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -601,14 +645,56 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton_sinActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double numInRadians = num;
+        
+        if (angleMode.equals("Degrees")) {
+            numInRadians = Math.toRadians(num); 
+        } 
+        else if (angleMode.equals("Grads")) {
+            numInRadians = num * (Math.PI / 200.0);
+        }
+        else {
+            numInRadians = num;
+        }
+        double result = Math.sin(numInRadians);
+        jTextField1.setText(String.valueOf(result));
     }                                           
 
     private void jButton_cosActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double numInRadians = num;
+        
+        if (angleMode.equals("Degrees")) {
+            numInRadians = Math.toRadians(num); 
+        } 
+        else if (angleMode.equals("Grads")) {
+            numInRadians = num * (Math.PI / 200.0);
+        }
+        else {
+            numInRadians = num;
+        }
+        double result = Math.cos(numInRadians);
+        jTextField1.setText(String.valueOf(result));
     }                                           
 
     private void jButton_tanActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double numInRadians = num;
+        
+        if (angleMode.equals("Degrees")) {
+            numInRadians = Math.toRadians(num); 
+        } 
+        else if (angleMode.equals("Grads")) {
+            numInRadians = num * (Math.PI / 200.0);
+        }
+        else {
+            numInRadians = num;
+        }
+        double result = Math.tan(numInRadians);
+        jTextField1.setText(String.valueOf(result));
     }                                           
 
     private void jButton_FActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -629,6 +715,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton_x2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double result = Math.pow(num, 2);
+        jTextField1.setText(String.valueOf(result));
     }                                          
 
     private void jButton_mcActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -787,6 +876,66 @@ public class MainFrame extends javax.swing.JFrame {
         }   
         jTextField1.setText(String.valueOf(result));
     }                                             
+
+    private void jButton_PMActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        num = num * -1;
+        jTextField1.setText(String.valueOf(num));
+    }                                          
+
+    private void jButton_1xActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        
+        if (num == 0) {
+            jTextField1.setText("0으로 나눌 수 없습니다.");
+        } else {
+            num = 1 / num;
+            jTextField1.setText(String.valueOf(num));
+        }
+    }                                          
+
+    private void jButton_npActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        int num = (int)Double.parseDouble(jTextField1.getText());
+        int result = 1; 
+        for (int i = 1; i <= num; i++) {
+            result = result * i;
+        }
+        jTextField1.setText(String.valueOf(result));
+    }                                          
+
+    private void jButton_x3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double result = Math.pow(num, 3);
+        jTextField1.setText(String.valueOf(result));
+    }                                          
+
+    private void jButton_logActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double result = Math.log10(num);
+        jTextField1.setText(String.valueOf(result));
+    }                                           
+
+    private void jButton_lnActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        double num = Double.parseDouble(jTextField1.getText());
+        double result = Math.log(num);
+        jTextField1.setText(String.valueOf(result));
+    }                                          
+
+    private void DegreesActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        angleMode = "Degrees";
+    }                                       
+
+    private void RadiansActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        angleMode = "Radians";
+    }                                       
 
     /**
      * @param args the command line arguments
