@@ -4,12 +4,11 @@
  * @author Unknown
  */
 public class MainFrame extends javax.swing.JFrame {
+    double num1;
+    String operator;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
-    /**
-     * Creates new form MainFrame
-     */
     public MainFrame() {
         initComponents();
     }
@@ -169,6 +168,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_dev.setForeground(new java.awt.Color(255, 0, 0));
         jButton_dev.setText("/");
+        jButton_dev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_devActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_dev, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 35, -1));
 
         jButton_Mod.setForeground(new java.awt.Color(255, 0, 0));
@@ -186,14 +190,29 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_CC.setForeground(new java.awt.Color(255, 0, 0));
         jButton_CC.setText("C");
+        jButton_CC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CCActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 90, 70, -1));
 
         jButton_Backspace.setForeground(new java.awt.Color(255, 0, 0));
         jButton_Backspace.setText("Backspace");
+        jButton_Backspace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BackspaceActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_Backspace, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
         jButton_CE.setForeground(new java.awt.Color(255, 0, 0));
         jButton_CE.setText("CE");
+        jButton_CE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CEActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_CE, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 63, -1));
 
         basePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -335,6 +354,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_mul.setForeground(new java.awt.Color(255, 0, 0));
         jButton_mul.setText("*");
+        jButton_mul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_mulActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_mul, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 35, -1));
 
         jButton_or.setForeground(new java.awt.Color(255, 0, 0));
@@ -398,6 +422,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_minus.setForeground(new java.awt.Color(255, 0, 0));
         jButton_minus.setText("-");
+        jButton_minus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_minusActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_minus, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 180, 35, -1));
 
         jButton_Lsh.setForeground(new java.awt.Color(255, 0, 0));
@@ -457,10 +486,20 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_Plus.setForeground(new java.awt.Color(255, 0, 0));
         jButton_Plus.setText("+");
+        jButton_Plus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_PlusActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_Plus, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 209, 35, -1));
 
         jButton_equal.setForeground(new java.awt.Color(255, 0, 0));
         jButton_equal.setText("=");
+        jButton_equal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_equalActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_equal, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 209, 35, -1));
 
         jButton_int.setForeground(new java.awt.Color(255, 0, 0));
@@ -472,7 +511,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton_x2.setForeground(new java.awt.Color(255, 51, 204));
         jButton_x2.setText("x^2");
-        jButton_x2.setPreferredSize(new java.awt.Dimension(72, 23));
         jButton_x2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_x2ActionPerformed(evt);
@@ -675,6 +713,58 @@ public class MainFrame extends javax.swing.JFrame {
         jTextField1.setText(crtText+".");
         }
     }                                         
+
+    private void jButton_CCActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        jTextField1.setText("");
+    }                                          
+
+    private void jButton_CEActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        jTextField1.setText("");
+
+    }                                          
+
+    private void jButton_BackspaceActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+        String cntText = jTextField1.getText();
+        int len = cntText.length();
+        String newText = cntText.substring(0, len - 1);
+        jTextField1.setText(newText);
+    }                                                 
+
+    private void jButton_PlusActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+        num1 = Double.parseDouble(jTextField1.getText());
+        operator = "+";
+        jTextField1.setText("");
+    }                                            
+
+    private void jButton_minusActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        num1 = Double.parseDouble(jTextField1.getText());
+        operator = "-";
+        jTextField1.setText("");
+    }                                             
+
+    private void jButton_mulActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        num1 = Double.parseDouble(jTextField1.getText());
+        operator = "*";
+        jTextField1.setText("");
+    }                                           
+
+    private void jButton_devActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        num1 = Double.parseDouble(jTextField1.getText());
+        operator = "/";
+        jTextField1.setText("");
+    }                                           
+
+    private void jButton_equalActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        
+    }                                             
 
     /**
      * @param args the command line arguments
