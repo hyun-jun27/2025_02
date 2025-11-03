@@ -5,6 +5,8 @@
  */
 public class MainFrame extends javax.swing.JFrame {
     double num1;
+    double num2;
+    double result;
     String operator;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
@@ -763,7 +765,27 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton_equalActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-        
+        num2 = Double.parseDouble(jTextField1.getText());
+        switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break; 
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                if (num2 == 0) {
+                    jTextField1.setText("0으로 나눌 수 없습니다.");
+                return; 
+                } else {
+                    result = num1 / num2;
+        }
+        break;
+        }   
+        jTextField1.setText(String.valueOf(result));
     }                                             
 
     /**
