@@ -1,0 +1,17 @@
+CREATE OR REPLACE procedure B202444052.TEST1 (v_sub_name in varchar2,
+v_sub_prof in varchar2,
+v_sub_grade in number,
+v_sub_dept in varchar2)
+is
+v_sub_no char(3);
+begin
+select max(sub_no)
+into v_sub_no
+from subject;
+v_sub_no := to_number
+(v_sub_no) + 1;
+insert into subject
+values(v_sub_no, v_sub_name, v_sub_prof,
+v_sub_grade,v_sub_dept);
+commit;
+end test1; 
