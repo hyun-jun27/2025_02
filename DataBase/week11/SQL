@@ -1,0 +1,115 @@
+
+create index i_stu_name on student(stu_name);
+
+create index i_stu_no_nameon student(stu_no, stu_name);
+
+create unique index i_stu_nameon student(stu_name);
+
+create index i_stu_weighton student(stu_weight-5);
+
+select * from user_indexes
+where table_name= 'STUDENT';
+
+create sequence seq1
+increment by 2
+start with 1000
+maxvalue 10000;
+
+select seq1.nextval from dual;
+
+drop table test1;
+
+select * from subject;
+
+execute test1('컴퓨터구조','강주봉',2, '컴퓨터정보');
+
+declare
+ v_condition number := 1;
+ begin
+ if v_condition = 1 then
+ dbms_output.put_line('대한');
+ end if;
+ end;
+ 
+ 
+ declare
+ v_condition number := 1;
+ begin
+ if v_condition = 1 then
+ dbms_output.put_line('대한');
+ else
+ dbms_output.put_line('민국');
+ end if;
+ end;
+
+declare
+ v_condition number := 2;
+ begin
+ if v_condition < 1 then
+ dbms_output.put_line('대한');
+ elsif v_condition = 1 then
+ dbms_output.put_line('민국');
+ else
+ dbms_output.put_line('만세');
+ end if;
+ end;
+
+
+
+declare
+ v_cnt number := 0;
+ v_sum number := 0;
+ begin
+ loop
+ v_cnt:= v_cnt +1;
+ v_sum := v_sum + v_cnt
+;
+ dbms_output.put_line
+(v_cnt|| ' '||v_sum);
+ exit when v_cnt = 10;
+ end loop
+;
+ end;
+
+declare
+ v_cnt number;
+ v_sum number := 0;
+ begin
+ for v_cnt in 1..10 loop
+ v_sum := v_sum + v_cnt;
+ dbms_output.put_line(v_cnt||' '||v_sum);
+ end loop;
+ end;
+ 
+
+declare
+ v_cnt number := 0;
+ v_sum number := 0;
+ begin
+ while v_cnt <= 10 loop v_cnt:= v_cnt + 1;
+ v_sum := v_sum + v_cnt
+;
+ dbms_output.put_line
+(v_cnt||' '||v_sum);
+ end loop
+;
+ end;
+ /
+
+SELECT stu_name
+INTO v_stu_name
+FROM student
+WHERE stu_no = v_stu_no; 
+
+UPDATE student
+SET stu_name = v_stu_name, stu_grade= v_stu_grade
+WHERE stu_no = v_stu_no;
+
+INSERT INTO subject
+VALUES(v_sub_no, v_sub_name, v_sub_prof,
+v_sub_grade, _sub_dept);
+
+DELETE
+FROM student
+WHERE stu_no = v_stu_no;  
+ 
